@@ -1,14 +1,14 @@
+(require 'package)
+(setq package-user-dir (expand-file-name "./.packages"))
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+			 ("elpe"  . "https://elpa.gnu.org/packages/")))
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(package-install 'htmlize)
+
 (require 'ox-publish)
-
-(use-package package
-  :config
-  (add-to-list 'package-archives '("melpa"        . "https://melpa.org/packages/"))
-  (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-  (add-to-list 'package-archives '("org"          . "https://orgmode.org/elpa/"))
-  :unless (bound-and-true-p package--initialized)
-  (package-initialize))
-
-(use-package htmlize :ensure t)
 
 (setq org-html-validation-link nil
       org-html-head-include-scripts nil
