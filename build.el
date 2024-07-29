@@ -8,6 +8,8 @@
 
 (package-install 'htmlize)
 
+(setq make-backup-files nil)
+
 (require 'ox-publish)
 
 (setq org-html-validation-link nil
