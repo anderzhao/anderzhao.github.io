@@ -16,21 +16,13 @@
       org-html-head-include-scripts nil
       org-html-head-include-default-style nil
       org-html-head "<link rel=\"stylesheet\"
-      href=\"https://cdn.simplecss.org/simple.min.css\" />")
+      href=\"/css/worg.css\" />")
 
 (setq org-publish-project-alist
-      '(("blog-page"
+      '(("blog-post"
 	 :base-directory "org/"
 	 :base-extension "org"
-	 :publishing-directory "public_html/"
-	 :recursive t
-	 :publishing-function org-html-publish-to-html
-	 :org-html-preamble nil
-	 )
-	("blog-post"
-	 :base-directory "org/post/"
-	 :base-extension "org"
-	 :publishing-directory "public_html/post/"
+	 :publishing-directory "public_html"
 	 :recursive t
 	 :publishing-function org-html-publish-to-html
 	 :org-html-preamble nil
@@ -39,6 +31,11 @@
 	 :with-toc t
 	 :section-numbers nil
 	 :time-stamp-file nil
+	 :auto-sitemap t
+	 :sitemap-filename "index.org"
+	 :sitemap-title "ander's blog"
+	 :sitemap-sort-files anti-chronologically
+	 :sitemap-file-entry-format "%d %t"
 	 )
 	("blog-static"
 	 :base-directory "org/"
@@ -48,7 +45,7 @@
 	 :publishing-function org-publish-attachment
 	 )
 	("blog"
-	 :components ("blog-page" "blog-post" "blog-static"))))
+	 :components ("blog-post" "blog-static"))))
 
 (org-publish-all t)
 
